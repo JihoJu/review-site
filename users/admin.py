@@ -31,3 +31,12 @@ class CustomUserAdmin(UserAdmin):
         "favorite_book_genre",
         "favorite_movie_genre",
     )
+
+    # Admin display list
+
+    list_display = UserAdmin.list_display + (
+        "language",
+        "preference",
+        "favorite_book_genre",
+        "favorite_movie_genre",
+    )

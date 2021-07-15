@@ -41,6 +41,12 @@ DJANGO_APPS = [
 
 PROJECT_APPS = [
     "users.apps.UsersConfig",
+    "books.apps.BooksConfig",
+    "movies.apps.MoviesConfig",
+    "categories.apps.CategoriesConfig",
+    "favs.apps.FavsConfig",
+    "people.apps.PeopleConfig",
+    "reviews.apps.ReviewsConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
