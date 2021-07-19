@@ -50,12 +50,8 @@ class User(AbstractUser):
     # User Model Field
 
     bio = models.TextField(null=True, default="")
-    preference = models.CharField(
-        choices=PREFERENCE_CHOICES, max_length=10, null=True, default=PREFERENCE_BOOK
-    )
-    language = models.CharField(
-        choices=LANGUAGE_CHOICES, max_length=10, null=True, default=LANGUAGE_KR
-    )
+    preference = models.CharField(choices=PREFERENCE_CHOICES, max_length=10, null=True)
+    language = models.CharField(choices=LANGUAGE_CHOICES, max_length=10, null=True)
     favorite_book_genre = models.ForeignKey(
         Category,
         null=True,

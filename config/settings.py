@@ -47,6 +47,7 @@ PROJECT_APPS = [
     "favs.apps.FavsConfig",
     "people.apps.PeopleConfig",
     "reviews.apps.ReviewsConfig",
+    "django_seed",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
