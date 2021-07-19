@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from django_seed import Seed
-from users.models import Category
+from categories.models import Category
 
 NAME = "categories"
 

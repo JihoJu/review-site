@@ -16,7 +16,7 @@ class Movie(TimeStampedModel):
     director = models.ForeignKey(
         Person, related_name="director", on_delete=models.CASCADE
     )
-    cast = models.ForeignKey(Person, related_name="cast", on_delete=models.CASCADE)
+    cast = models.ManyToManyField(Person, related_name="cast")
 
     def __str__(self):
         return self.title

@@ -41,5 +41,4 @@ class MovieAdminModel(admin.ModelAdmin):
         "rating",
         "category",
         "director",
-        "cast",
     )

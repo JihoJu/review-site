@@ -1,5 +1,6 @@
 import random
 from django.core.management.base import BaseCommand
+from django.contrib.admin.utils import flatten
 from django_seed import Seed
 from people.models import Person
 from categories.models import Category
@@ -39,8 +40,13 @@ class Command(BaseCommand):
                 "category": lambda x: random.choice(all_categories_movies),
                 "rating": lambda x: random.randint(0, 5),
                 "director": lambda x: random.choice(all_director),
-                "cast": lambda x: random.choice(all_actor),
             },
         )
-        seeder.execute()
+        inserted_pk = seeder.execute()
+        inserted_pk = flatten(list(inserted_pk.values()))
+
+        for pk in inserted_pk:
+            movie = Movie.objects.get(pk=pk)
+            for i in range(random.randint(1, 10)):
+                movie.cast.add(random.choice(all_actor))
         self.stdout.write(self.style.SUCCESS(f"{total} {NAME} created!!"))
