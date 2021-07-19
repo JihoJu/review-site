@@ -10,7 +10,7 @@ class Movie(TimeStampedModel):
 
     title = models.CharField(max_length=200, blank=True)
     year = models.IntegerField(null=True, blank=True)
-    cover_image = models.ImageField(null=True)
+    cover_image = models.ImageField(null=True, upload_to="movie_images")
     rating = models.IntegerField(null=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     director = models.ForeignKey(

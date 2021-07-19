@@ -11,7 +11,7 @@ class Book(TimeStampedModel):
     title = models.CharField(max_length=200, blank=True)
     year = models.IntegerField(null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
-    cover_image = models.ImageField(null=True)
+    cover_image = models.ImageField(null=True, upload_to="book_images")
     rating = models.IntegerField(null=True)
     writer = models.ForeignKey(Person, on_delete=models.CASCADE)
 
