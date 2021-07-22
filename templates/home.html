@@ -1,1 +1,56 @@
-<h1>Home</h1>
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Home
+{% endblock page_title %}
+
+{% block content %}
+    <section>
+        <h1>Latest Movies</h1>
+        {% for movie in latest_movies.object_list %}
+            <h4>{{movie.title}} - {{movie.director}}</h4>
+        {% endfor %}
+        <h5>
+            {% if latest_movies.has_previous %}
+                <a href="?movies_page={{latest_movies.previous_page_number}}&books_page={{latest_books.number}}&people_page={{latest_people.number}}">Previous</a>
+            {% endif %}
+            Page {{latest_movies.number}} of {{latest_movies.paginator.num_pages}}
+            {% if latest_movies.has_next %}
+                <a href="?movies_page={{latest_movies.next_page_number}}&books_page={{latest_books.number}}&people_page={{latest_people.number}}">Next</a>
+            {% endif %}
+        </h5>
+    </section>
+    <section>
+        <h1>Latest Books</h1>
+        {% for book in latest_books %}
+            <h4>{{book.title}} - {{book.writer}}</h4>
+        {% endfor %}
+
+        <h5>
+            {% if latest_books.has_previous %}
+                <a href="?movies_page={{latest_movies.number}}&books_page={{latest_books.previous_page_number}}&people_page={{latest_people.number}}">Previous</a>
+            {% endif %}
+            Page {{latest_books.number}} of {{latest_books.paginator.num_pages}}
+            {% if latest_books.has_next %}
+                <a href="?movies_page={{latest_movies.number}}&books_page={{latest_books.next_page_number}}&people_page={{latest_people.number}}">Next</a>
+            {% endif %}
+        </h5>
+    </section>
+    <section>
+        <h1>Latest People</h1>
+        {% for person in latest_people %}
+            <h4>{{person.name}}</h4>
+        {% endfor %}
+
+        <h5>
+            {% if latest_people.has_previous %}
+                <a href="?movies_page={{latest_movies.number}}&books_page={{latest_books.number}}&people_page={{latest_people.previous_page_number}}">Previous</a>
+            {% endif %}    
+            Page {{latest_people.number}} of {{latest_people.paginator.num_pages}}
+            {% if latest_people.has_next %}
+                <a href="?movies_page={{latest_movies.number}}&books_page={{latest_books.number}}&people_page={{latest_people.next_page_number}}">Next</a>
+            {% endif %}                
+        </h5>
+    </section>
+{% endblock content %}
+    
