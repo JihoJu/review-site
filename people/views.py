@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def resolve_people(request):
+    return render(request, "people.html")
