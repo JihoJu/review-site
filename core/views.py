@@ -1,4 +1,4 @@
-from django.core.paginator import Paginator
+from django.core.paginator import EmptyPage, Paginator
 from django.shortcuts import render
 from movies.models import Movie
 from books.models import Book
@@ -6,21 +6,31 @@ from people.models import Person
 
 
 def resolve_home(request):
-    movies_page = request.GET.get("movies_page")
-    books_page = request.GET.get("books_page")
-    people_page = request.GET.get("people_page")
+    movies_page = request.GET.get("movies_page", 1)
+    books_page = request.GET.get("books_page", 1)
+    people_page = request.GET.get("people_page", 1)
 
     latest_movies_list = Movie.objects.all().order_by("-created")
     latest_books_list = Book.objects.all().order_by("-created")
     latest_people_list = Person.objects.all().order_by("-created")
 
-    paginator_movies = Paginator(latest_movies_list, 5, orphans=3)
-    paginator_books = Paginator(latest_books_list, 5, orphans=3)
-    paginator_people = Paginator(latest_people_list, 5, orphans=3)
+    try:
+        paginator_movies = Paginator(latest_movies_list, 10, orphans=5)
+        latest_movies = paginator_movies.page(int(movies_page))
+    except EmptyPage:
+        latest_movies = None
 
-    latest_movies = paginator_movies.get_page(movies_page)
-    latest_books = paginator_books.get_page(books_page)
-    latest_people = paginator_people.get_page(people_page)
+    try:
+        paginator_books = Paginator(latest_books_list, 10, orphans=5)
+        latest_books = paginator_books.page(int(books_page))
+    except EmptyPage:
+        latest_books = None
+
+    try:
+        paginator_people = Paginator(latest_people_list, 10, orphans=5)
+        latest_people = paginator_people.page(int(people_page))
+    except EmptyPage:
+        latest_people = None
 
     return render(
         request,
