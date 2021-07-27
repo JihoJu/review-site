@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Book
 from .forms import CreateBookForm
 
@@ -27,6 +27,11 @@ class BookDetailView(DetailView):
     model = Book
     template_name = "books/book_detail.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["page_title"] = f"[Book] {context['object']}"
+        return context
+
 
 class BookCreateView(CreateView):
 
@@ -34,3 +39,23 @@ class BookCreateView(CreateView):
 
     form_class = CreateBookForm
     template_name = "books/book_create.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["page_title"] = "Create Book"
+        return context
+
+
+class BookUpdateView(UpdateView):
+
+    """Book UpdateView Definition"""
+
+    model = Book
+    template_name = "books/book_update.html"
+    fields = (
+        "title",
+        "year",
+        "category",
+        "cover_image",
+        "writer",
+    )

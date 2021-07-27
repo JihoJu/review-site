@@ -3,7 +3,7 @@
 {% block content %}
     <section>
         <div>
-            <h1>Name: {{person.name}}</h2>
+            <h1>Name: {{person.name}} | <a href="{% url 'people:update' person.pk %}">수정</a></h2></h2>
             <h3>Kind : {{person.kind}}</h3>
           <hr />
         </div>
