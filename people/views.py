@@ -10,7 +10,7 @@ class HomePeopleView(ListView):
     paginate_by = 10
     paginate_orphans = 5
     ordering = "-created"
-    template_name = "people_list.html"
+    template_name = "people/people_list.html"
     context_object_name = "people"
 
     def get_context_data(self, **kwargs):

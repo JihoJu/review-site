@@ -10,7 +10,7 @@ class MovieHomeView(ListView):
     paginate_by = 10
     paginate_orphans = 5
     ordering = "-created"
-    template_name = "movie_list.html"
+    template_name = "movies/movie_list.html"
     context_object_name = "movies"
 
     def get_context_data(self, **kwargs):

@@ -2,19 +2,27 @@
 
 {% block content %}
     <section>
-        <h1>Latest Books List</h1>
-        {% for book in books %}
-            <h4>{{book.title}} - {{book.writer}}</h4>
-        {% endfor %}
-        <h5>
-            {% if page_obj.has_previous %}
-                <a href="?page={{page_obj.previous_page_number}}">Previous</a>
-            {% endif %}
-            Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
-            {% if page_obj.has_next %}
-                <a href="?page={{page_obj.next_page_number}}">Next</a>
-            {% endif %}
-        </h5>
+        <div>
+            <h2>Books</h2>
+            {% for book in books %}
+                <div>
+                    <h3>{{book.title}} - {{book.writer}}</h3>
+                    <h5>{{book.year}}</h5>
+                </div>
+            {% endfor %}
+          <hr />
+        </div>
+        <div>
+            <h5>
+                {% if page_obj.has_previous %}
+                    <a href="?page={{page_obj.previous_page_number}}">Previous</a>
+                {% endif %}
+                Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+                {% if page_obj.has_next %}
+                    <a href="?page={{page_obj.next_page_number}}">Next</a>
+                {% endif %}
+            </h5>
+        </div>
     </section>
 {% endblock content %}
     
