@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import resolve_people
+from .views import HomePeopleView
 
 app_name = "people"
 
 urlpatterns = [
-    path("", resolve_people, name="people"),
+    path("", HomePeopleView.as_view(), name="people"),
 ]

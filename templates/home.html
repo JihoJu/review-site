@@ -6,7 +6,7 @@
 
 {% block content %}
     <section>
-        <h1><a href="#">Latest Movies</a></h1>
+        <h1><a href="{% url 'movies:movies' %}">Latest Movies(Click)</a></h1>
         {% for movie in latest_movies.object_list %}
             <h4>{{movie.title}} - {{movie.director}}</h4>
         {% endfor %}
@@ -21,7 +21,7 @@
         </h5>
     </section>
     <section>
-        <h1><a href="#">Latest Books</a></h1>
+        <h1><a href="{% url 'books:books' %}">Latest Books(Click)</a></h1>
         {% for book in latest_books %}
             <h4>{{book.title}} - {{book.writer}}</h4>
         {% endfor %}
@@ -37,7 +37,7 @@
         </h5>
     </section>
     <section>
-        <h1><a href="#">Latest People</a></h1>
+        <h1><a href="{% url 'people:people' %}">Latest People(Click)</a></h1>
         {% for person in latest_people %}
             <h4>{{person.name}}</h4>
         {% endfor %}

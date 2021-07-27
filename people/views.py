@@ -1,5 +1,14 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Person
 
 
-def resolve_people(request):
-    return render(request, "people.html")
+class HomePeopleView(ListView):
+
+    """HomePeopleView Definition"""
+
+    model = Person
+    paginate_by = 10
+    paginate_orphans = 5
+    ordering = "-created"
+    template_name = "people_list.html"
+    context_object_name = "people"

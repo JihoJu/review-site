@@ -1,5 +1,14 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Movie
 
 
-def resolve_movies(request):
-    return render(request, "movies.html")
+class MovieHomeView(ListView):
+
+    """MovieHomeView Definition"""
+
+    model = Movie
+    paginate_by = 10
+    paginate_orphans = 5
+    ordering = "-created"
+    template_name = "movie_list.html"
+    context_object_name = "movies"

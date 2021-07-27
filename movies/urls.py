@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import resolve_movies
+from .views import MovieHomeView
 
 app_name = "movies"
 
 urlpatterns = [
-    path("", resolve_movies, name="movies"),
+    path("", MovieHomeView.as_view(), name="movies"),
 ]
