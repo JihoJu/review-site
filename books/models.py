@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from core.models import TimeStampedModel
 from categories.models import Category
 from people.models import Person
@@ -17,3 +18,6 @@ class Book(TimeStampedModel):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("books:detail", kwargs={"pk": self.pk})
