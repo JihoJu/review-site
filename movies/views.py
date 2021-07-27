@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Movie
 
 
@@ -17,3 +17,11 @@ class MovieHomeView(ListView):
         context = super().get_context_data(**kwargs)
         context["page_title"] = "All Movies"
         return context
+
+
+class MovieDetailView(DetailView):
+
+    """Movie DetailView Definition"""
+
+    model = Movie
+    template_name = "movies/movie_detail.html"

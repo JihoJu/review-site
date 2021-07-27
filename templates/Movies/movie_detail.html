@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <div>
+            <h1>{{movie.title}}</h2>
+            <h3>Director : {{movie.director}}</h3>
+            <h3>Year : {{movie.year}}</h3>
+            <h3>Rating : {{movie.rating}}</h3>
+            <h3>Category : {{movie.category}}</h3>
+            <h3>Cast</h3>
+            <ul>
+                {% for cast in movie.cast.all %}
+                    <li>{{cast}}</li>
+                {% endfor %}
+            </ul>
+          <hr />
+        </div>
+    </section>
+{% endblock content %}
+    

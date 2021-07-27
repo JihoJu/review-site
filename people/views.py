@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Person
 
 
@@ -17,3 +17,11 @@ class HomePeopleView(ListView):
         context = super().get_context_data(**kwargs)
         context["page_title"] = "All People"
         return context
+
+
+class PeopleDetailView(DetailView):
+
+    """People DetailView Definition"""
+
+    model = Person
+    template_name = "people/people_detail.html"

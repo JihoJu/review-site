@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Book
 
 
@@ -17,3 +17,11 @@ class BookHomeView(ListView):
         context = super().get_context_data(**kwargs)
         context["page_title"] = "All Books"
         return context
+
+
+class BookDetailView(DetailView):
+
+    """Book DetailView Definition"""
+
+    model = Book
+    template_name = "books/book_detail.html"

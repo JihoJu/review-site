@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <div>
+            <h1>{{book.title}}</h2>
+            <h3>Director : {{book.writer}}</h3>
+            <h3>Year : {{book.year}}</h3>
+            <h3>Rating : {{book.rating}}</h3>
+            <h3>Category : {{book.category}}</h3>
+          <hr />
+        </div>
+    </section>
+{% endblock content %}
+    
