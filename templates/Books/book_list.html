@@ -4,6 +4,9 @@
     <section>
         <div>
             <h2>Books</h2>
+            <a href="{% url 'books:create' %}">
+                <h3>Create Book</h3>
+            </a>
             {% for book in books %}
                 <div>
                     <a href="{% url 'books:detail' book.pk %}">

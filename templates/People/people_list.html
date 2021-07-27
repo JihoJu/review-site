@@ -4,6 +4,9 @@
     <section>
         <div>
             <h2>People</h2>
+            <a href="{% url 'people:create' %}">
+                <h3>Create Person</h3>
+            </a>
             {% for person in people %}
                 <div>
                     <a href="{% url 'people:detail' person.pk %}">

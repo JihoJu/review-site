@@ -4,6 +4,9 @@
     <section>
         <div>
             <h2>Movies</h2>
+            <a href="{% url 'movies:create' %}">
+                <h3>Create Movie</h3>
+            </a>
             {% for movie in movies %}
                 <div>
                     <a href="{% url 'movies:detail' movie.pk %}">

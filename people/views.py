@@ -1,5 +1,6 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Person
+from .forms import CreatePeopleForm
 
 
 class HomePeopleView(ListView):
@@ -25,3 +26,11 @@ class PeopleDetailView(DetailView):
 
     model = Person
     template_name = "people/people_detail.html"
+
+
+class PeopleCreateView(CreateView):
+
+    """People CreateView Definition"""
+
+    form_class = CreatePeopleForm
+    template_name = "people/people_create.html"

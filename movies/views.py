@@ -1,5 +1,6 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Movie
+from .forms import CreateMovieForm
 
 
 class MovieHomeView(ListView):
@@ -25,3 +26,11 @@ class MovieDetailView(DetailView):
 
     model = Movie
     template_name = "movies/movie_detail.html"
+
+
+class MovieCreateView(CreateView):
+
+    """Movie CreateView Definition"""
+
+    form_class = CreateMovieForm
+    template_name = "movies/movie_create.html"
