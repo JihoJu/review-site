@@ -22,6 +22,7 @@ from . import settings
 
 urlpatterns = [
     path("", include("core.urls", namespace="core")),
+    path("users/", include("users.urls", namespace="users")),
     path("movies/", include("movies.urls", namespace="movies")),
     path("books/", include("books.urls", namespace="books")),
     path("genres/", include("categories.urls", namespace="categories")),
