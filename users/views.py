@@ -1,6 +1,5 @@
 from django.shortcuts import redirect, render, reverse
 from django.contrib.auth import authenticate, login, logout
-from django.views.generic import FormView
 from django.views.generic.base import View
 from .forms import LoginForm
 
@@ -23,3 +22,11 @@ class LoginView(View):
                 login(self.request, user)
                 return redirect(reverse("core:home"))
         return render(request, "users/login.html", {"form": form})
+
+
+def log_out(request):
+
+    """Logout Func Definition"""
+
+    logout(request)
+    return redirect("core:home")
