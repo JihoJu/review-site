@@ -5,6 +5,9 @@
         {{field.label}}
         {{field}}
     </div>
+    {% if field.errors %}
+        <span>{{field.errors}}</span>
+    {% endif %}
     {% endfor %}
     <button>{{cta}}</button>
 </form>
