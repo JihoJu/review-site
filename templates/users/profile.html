@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <div>
+            <h1>Username : {{user.last_name}} {{user.first_name}}</h1>
+            <h3>Preference : {{user.preference}}</h3>
+            <h3>Language : {{user.language}}</h3>
+            <h3>Favorite Book Genre : {{user.favorite_book_genre}}</h3>
+            <h3>Favorite Movie Genre : {{user.favorite_movie_genre}}</h3>
+            <h3>Bio</h3>
+            <p>
+                {{user.bio}}
+            </p>
+          <hr />
+        </div>
+    </section>
+{% endblock content %}
+    

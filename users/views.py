@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render, reverse
 from django.contrib.auth import authenticate, login, logout
-from django.views.generic import FormView
+from django.views.generic import FormView, DetailView
 from django.views.generic.base import View
 from .forms import LoginForm, SignUpForm
+from .models import User
 
 
 class LoginView(View):
@@ -52,3 +53,21 @@ class SignUpView(FormView):
 
     def get_success_url(self):
         return reverse("core:home")
+
+
+class ProfileView(DetailView):
+
+    """Profile View Definition"""
+
+    model = User
+    fields = (
+        "first_name",
+        "last_name",
+        "bio",
+        "preference",
+        "language",
+        "favorite_book_genre",
+        "favorite_movie_genre",
+    )
+    template_name = "users/profile.html"
+    context_object_name = "user"
