@@ -2,6 +2,7 @@
 
 {% block content %}
     <section>
+        <a href="{% url 'users:profile-update' user.pk %}"><span>수정</span></a>
         <div>
             <h1>Username : {{user.last_name}} {{user.first_name}}</h1>
             <h3>Preference : {{user.preference}}</h3>

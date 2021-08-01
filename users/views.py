@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render, reverse
 from django.contrib.auth import authenticate, login, logout
-from django.views.generic import FormView, DetailView
+from django.views.generic import FormView, DetailView, UpdateView
 from django.views.generic.base import View
 from .forms import LoginForm, SignUpForm
 from .models import User
@@ -71,3 +71,23 @@ class ProfileView(DetailView):
     )
     template_name = "users/profile.html"
     context_object_name = "user"
+
+
+class ProfileUpdateView(UpdateView):
+
+    """Profile UpdateView Definition"""
+
+    model = User
+    fields = (
+        "first_name",
+        "last_name",
+        "preference",
+        "language",
+        "favorite_book_genre",
+        "favorite_movie_genre",
+        "bio",
+    )
+    template_name = "users/profile_update.html"
+
+    def get_success_url(self):
+        return reverse("users:profile", kwargs={"pk": self.request.user.pk})
