@@ -1,1 +1,28 @@
-<h1>Search</h1>
+{% extends "base.html" %}
+
+{% block page_title %}
+    Search Page
+{% endblock page_title %}
+
+
+{% block search-form %}
+{% endblock search-form %}
+
+
+{% block content %}
+    <form action="{% url 'core:search' %}" method="GET">
+        {{form.as_p}}
+        <button>Search</button>
+    </form>
+
+    <h1>Books</h1>
+    
+    {% for book in books %}
+        <h3><a href="{% url 'books:detail' book.pk %}">{{book.title}}</a></h3>
+    {% endfor %}
+    <hr/>
+    <h1>Movies</h1>
+    {% for movie in movies %}
+        <h3><a href="{% url 'movies:detail' movie.pk %}">{{movie.title}}</a></h3>
+    {% endfor %}
+{% endblock content %}

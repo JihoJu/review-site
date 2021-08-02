@@ -1,8 +1,10 @@
 from django.core.paginator import EmptyPage, Paginator
+from django.views.generic import View
 from django.shortcuts import render
 from movies.models import Movie
 from books.models import Book
 from people.models import Person
+from .forms import SearchForm
 
 
 def resolve_home(request):
@@ -43,5 +45,40 @@ def resolve_home(request):
     )
 
 
-def resolve_search(request):
-    return render(request, "search.html")
+class SearchView(View):
+
+    """Search View Definition"""
+
+    def get(self, request):
+        keyword = request.GET.get("key_word")
+
+        if keyword is not None:
+            # request.GET => 어떤 걸 검색했고 선택했는 지 기억한다.
+            form = SearchForm(request.GET)
+
+            # db에서 불러올 명령어
+            filter_tag = dict()
+
+            if form.is_valid():
+                keyword = form.cleaned_data.get("key_word")
+
+                if keyword:
+                    filter_tag["title__contains"] = str(keyword)
+
+                books = Book.objects.filter(**filter_tag)
+                movies = Movie.objects.filter(**filter_tag)
+
+                return render(
+                    request,
+                    "search.html",
+                    {
+                        "form": form,
+                        "books": books,
+                        "movies": movies,
+                    },
+                )
+
+        else:
+            form = SearchForm()
+
+        return render(request, "search.html", {"form": form})

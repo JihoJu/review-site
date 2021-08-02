@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import resolve_home, resolve_search
+from .views import resolve_home, SearchView
 
 app_name = "core"
 
 urlpatterns = [
     path("", resolve_home, name="home"),
-    path("search/", resolve_search, name="search"),
+    path("search/", SearchView.as_view(), name="search"),
 ]

@@ -7,7 +7,16 @@
         <title> {% block page_title %}{% endblock page_title %} </title>
     </head>
     <body>
-        {% include "nav.html" %}
+        <header>
+            {% include "nav.html" %}
+        </header>
+        {% block search-form %}
+            <form action="{% url 'core:search' %}" method="GET">
+                <input name="key_word" />
+                <button>Search</button>
+            </form>
+        {% endblock search-form %}
+
         {% block content %}
         {% endblock content %}
     </body>
