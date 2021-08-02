@@ -36,7 +36,6 @@ def resolve_home(request):
         request,
         "home.html",
         context={
-            "page_title": "Home",
             "latest_movies": latest_movies,
             "latest_books": latest_books,
             "latest_people": latest_people,
