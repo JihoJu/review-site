@@ -21,7 +21,7 @@ class LoginForm(forms.Form):
         password = self.cleaned_data.get("password")
 
         try:
-            user = User.objects.get(username=email)
+            user = User.objects.get(email=email)
             if user.check_password(password):
                 return self.cleaned_data
             else:
